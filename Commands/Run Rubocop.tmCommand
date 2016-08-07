@@ -10,7 +10,7 @@ require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
 RubocopRunner.new.run</string>
 	<key>input</key>
-	<string>selection</string>
+	<string>none</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
