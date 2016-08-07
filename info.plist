@@ -10,6 +10,17 @@
 	<string>Bundle for the RuboCop Ruby Linter.</string>
 	<key>name</key>
 	<string>RuboCop</string>
+	<key>mainMenu</key>
+	<dict>
+		<key>excludedItems</key>
+		<array>
+			<string>0EA6C62D-D2BE-415C-B645-E32203CD22B9</string>
+		</array>
+		<key>items</key>
+		<array>
+			<string>CF5F3ECB-CCF4-4F73-B458-753A26002507</string>
+		</array>
+	</dict>
 	<key>uuid</key>
 	<string>8D75F09A-145A-43CD-853E-6C9CF0341624</string>
 </dict>
