@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>fgrsna@qnfpurx.arg</string>
+	<key>contactName</key>
+	<string>Stefan Daschek</string>
+	<key>description</key>
+	<string>Bundle for the RuboCop Ruby Linter.</string>
+	<key>name</key>
+	<string>RuboCop</string>
+	<key>uuid</key>
+	<string>8D75F09A-145A-43CD-853E-6C9CF0341624</string>
+</dict>
+</plist>
