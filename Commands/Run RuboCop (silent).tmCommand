@@ -8,7 +8,7 @@
 	<string>#!/usr/bin/env ruby18
 require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
-RubocopRunner.new.run_in_background</string>
+RubocopRunner.new.run_in_background(ENV['TM_FILEPATH'])</string>
 	<key>input</key>
 	<string>none</string>
 	<key>inputFormat</key>

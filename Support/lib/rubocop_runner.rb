@@ -8,17 +8,19 @@ class RubocopRunner
     Dir.chdir(ENV['TM_PROJECT_DIRECTORY'])
   end
 
-  def run
+  def run(file_or_files)
+    return unless file_or_files
+    files = Array(file_or_files)
     executable, options = find_rubocop_executable
     if executable
-
       options = {
         :script_args => %w(--format clang),
         :verb => 'Linting',
+        :noun => files.size == 1 ? File.basename(files[0]) : "#{files.size} selected files",
         :use_hashbang => false,
         :version_replace => 'RuboCop \1'
       }.merge(options)
-      TextMate::Executor.run(executable, ENV['TM_FILEPATH'], options) do |line, _type|
+      TextMate::Executor.run(executable, files, options) do |line, _type|
         if line =~ /(\d+) offenses? detected/
           TextMate::UI.tool_tip(Regexp.last_match(0)) if Regexp.last_match(1).to_i > 0
         end
@@ -31,11 +33,11 @@ class RubocopRunner
     end
   end
 
-  def run_in_background
+  def run_in_background(file_or_files)
     pid = fork do
       STDOUT.reopen(open('/dev/null', 'w'))
       STDERR.reopen(open('/dev/null', 'w'))
-      run
+      run(file_or_files)
     end
     Process.detach(pid)
   end

@@ -6,9 +6,10 @@
 	<string>saveActiveFile</string>
 	<key>command</key>
 	<string>#!/usr/bin/env ruby18
+require "#{ENV['TM_SUPPORT_PATH']}/lib/textmate"
 require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
-RubocopRunner.new.run</string>
+RubocopRunner.new.run(TextMate.selected_files || ENV['TM_FILEPATH'])</string>
 	<key>input</key>
 	<string>none</string>
 	<key>inputFormat</key>
