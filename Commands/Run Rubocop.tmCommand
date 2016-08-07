@@ -14,7 +14,7 @@ RubocopRunner.new.run</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>@l</string>
+	<string>^@l</string>
 	<key>name</key>
 	<string>Run RuboCop</string>
 	<key>outputCaret</key>
