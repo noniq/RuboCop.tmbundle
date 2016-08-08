@@ -8,7 +8,16 @@
 	<string>#!/usr/bin/env ruby18
 require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
-RubocopRunner.new.run_in_background(ENV['TM_FILEPATH'])</string>
+RubocopRunner.new.run_in_background(ENV['TM_FILEPATH']) do |detected_offenses|
+  case detected_offenses
+  when false
+    TextMate::UI.tool_tip("RuboCop: Could not find rubocop executable!")
+  when 0
+    # do nothing
+  else
+    TextMate::UI.tool_tip("RuboCop: #{detected_offenses} offense#{'s' unless detected_offenses == 1} detected")
+  end
+end</string>
 	<key>input</key>
 	<string>none</string>
 	<key>inputFormat</key>

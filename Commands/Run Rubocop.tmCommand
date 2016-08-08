@@ -9,7 +9,13 @@
 require "#{ENV['TM_SUPPORT_PATH']}/lib/textmate"
 require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
-RubocopRunner.new.run(TextMate.selected_files || ENV['TM_FILEPATH'])</string>
+RubocopRunner.new.run(TextMate.selected_files || ENV['TM_FILEPATH']) do |detected_offenses|
+  if detected_offenses == false
+    buttons = ['OK', 'Open Installation Instructions']
+    btn = TextMate::UI.alert(:critical, 'Rubocop not found', 'You need to install RuboCop first.', *buttons)
+    system('open "http://rubocop.readthedocs.io/en/latest/installation/"') if btn == buttons[1]
+  end
+end</string>
 	<key>input</key>
 	<string>none</string>
 	<key>inputFormat</key>
