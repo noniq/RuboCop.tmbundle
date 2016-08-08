@@ -25,7 +25,7 @@ RubocopRunner.new.run(TextMate.selected_files || ENV['TM_FILEPATH'])</string>
 	<key>outputLocation</key>
 	<string>newWindow</string>
 	<key>scope</key>
-	<string>source.ruby</string>
+	<string>source.ruby, attr.project.rake</string>
 	<key>uuid</key>
 	<string>CF5F3ECB-CCF4-4F73-B458-753A26002507</string>
 	<key>version</key>
