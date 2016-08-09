@@ -5,12 +5,12 @@ This bundle integrates [RuboCop](https://github.com/bbatsov/rubocop) into [TextM
 ## Features
 
  * RuboCop runs automatically each time a Ruby file is saved. Output is not shown directly, but a gutter icon (warning sign) is added to each line that triggered a RuboCop message. Click on these icons to show the associated messages.
- * Alternatively there’s also the explicit **“Run RuboCop”** command (bound to <kbd>⌃⌘L</kbd>): This runs RuboCop for the files currently selected in the file browser and shows the output ([clang style][]) in a separate window. Clicking on the filename part of a message will bring you to the appropriate line in the source file. Note that no (other) file must be selected if you want to run RuboCop for the current file (use <kbd>⇧⌘A</kbd> to clear the selection in the file browser if necessary.)
+ * Alternatively there’s also the explicit **“Run RuboCop”** command (bound to <kbd>⌃⌘L</kbd>): This runs RuboCop for the files *currently selected in the file browser* and shows the output ([clang style][]) in a separate window. Clicking on the filename part of a message will bring you to the appropriate line in the source file. Note that if you want to run RuboCop for the *current file*, no (other) file must be selected (use <kbd>⇧⌘A</kbd> to clear the selection in the file browser if necessary).
 
-Note that there is another subtle difference between running RuboCop implicitly (on save) or explicitly (via “Run RuboCop”): If your RuboCop configuration file excludes some files, those files will not be checked on save. They will however be checked if they are selected in the file browser and you use “Run RuboCop” (technically, running RuboCop on save uses [`--force-exclusion`][]).
+There is one more subtle difference between running RuboCop implicitly (on save) or explicitly (via “Run RuboCop”): If your RuboCop configuration file excludes some files, those files will not be checked on save. They will however be checked if they are selected in the file browser and you use “Run RuboCop” (technically, running RuboCop on save uses [`--force-exclusion`][]).
 
 [clang style]: http://rubocop.readthedocs.io/en/latest/formatters/#clang-style-formatter
-[`--force-exclusions`]: https://github.com/bbatsov/rubocop/issues/893
+[`--force-exclusion`]: https://github.com/bbatsov/rubocop/issues/893
 
 ## Determining Which RuboCop Executable to Use
 
