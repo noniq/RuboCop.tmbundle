@@ -8,10 +8,11 @@ class RubocopRunner
     Dir.chdir(ENV['TM_PROJECT_DIRECTORY'])
   end
 
-  # Run RuboCop for the given single file or Array of files.
+  # Run RuboCop for the given single file or Array of files. `script_args` can be used to pass additional command line options to
+  # RuboCop.
   #
   # If a block is given, it will be passed the number detected offenses (or false if no rubocop executable was found).
-  def run(file_or_files)
+  def run(file_or_files, script_args = [])
     return unless file_or_files
     files = Array(file_or_files)
     executable, options = find_rubocop_executable
@@ -19,7 +20,7 @@ class RubocopRunner
       yield false if block_given?
     else
       options = {
-        :script_args => %w(--format clang),
+        :script_args => %w(--format clang) + script_args,
         :verb => 'Linting',
         :noun => files.size == 1 ? File.basename(files[0]) : "#{files.size} selected files",
         :use_hashbang => false,
@@ -35,11 +36,11 @@ class RubocopRunner
   end
 
   # Like `#run`, but RuboCop will be run in the background (detached) to avoid blocking TextMate’s UI.
-  def run_in_background(file_or_files, &block)
+  def run_in_background(file_or_files, script_args = [], &block)
     pid = fork do
       STDOUT.reopen(open('/dev/null', 'w'))
       STDERR.reopen(open('/dev/null', 'w'))
-      run(file_or_files, &block)
+      run(file_or_files, script_args, &block)
     end
     Process.detach(pid)
   end

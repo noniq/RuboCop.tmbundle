@@ -8,7 +8,9 @@
 	<string>#!/usr/bin/env ruby18
 require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
-RubocopRunner.new.run_in_background(ENV['TM_FILEPATH']) do |detected_offenses|
+# Run with `--force-exclusion` to make sure that files excluded in the RuboCop config file are not checked (default behaviour of
+# RuboCop is to always check files that are explicitly passed as arguments).
+RubocopRunner.new.run_in_background(ENV['TM_FILEPATH'], %w(--force-exclusion)) do |detected_offenses|
   case detected_offenses
   when false
     TextMate::UI.tool_tip("RuboCop: Could not find rubocop executable!")
