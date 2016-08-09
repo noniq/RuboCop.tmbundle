@@ -11,9 +11,9 @@ require "#{ENV['TM_BUNDLE_SUPPORT']}/lib/rubocop_runner"
 
 RubocopRunner.new.run(TextMate.selected_files || ENV['TM_FILEPATH']) do |detected_offenses|
   if detected_offenses == false
-    buttons = ['OK', 'Open Installation Instructions']
-    btn = TextMate::UI.alert(:critical, 'Rubocop not found', 'You need to install RuboCop first.', *buttons)
-    system('open "http://rubocop.readthedocs.io/en/latest/installation/"') if btn == buttons[1]
+    buttons = ['OK', 'Read More']
+    btn = TextMate::UI.alert(:critical, 'RuboCop not found', 'Please make sure to have RuboCop installed in a way that is supported by this bundle.', *buttons)
+    system('open "https://github.com/noniq/RuboCop.tmbundle#determining-which-rubocop-executable-to-use"') if btn == buttons[1]
   end
 end</string>
 	<key>input</key>
