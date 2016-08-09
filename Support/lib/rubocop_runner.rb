@@ -20,7 +20,7 @@ class RubocopRunner
       yield false if block_given?
     else
       options = {
-        :script_args => %w(--format clang) + script_args,
+        :script_args => %w(--format clang --display-cop-names) + script_args,
         :verb => 'Linting',
         :noun => files.size == 1 ? File.basename(files[0]) : "#{files.size} selected files",
         :use_hashbang => false,
