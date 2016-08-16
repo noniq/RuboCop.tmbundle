@@ -24,7 +24,7 @@ class RubocopRunner
         :verb => 'Linting',
         :noun => files.size == 1 ? File.basename(files[0]) : "#{files.size} selected files",
         :use_hashbang => false,
-        :version_replace => 'RuboCop \1'
+        :version_replace => 'RuboCop \1',
       }.merge(options)
       detected_offenses = nil
       TextMate::Executor.run(executable, files, options) do |line, _type|
