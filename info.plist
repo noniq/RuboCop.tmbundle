@@ -8,8 +8,6 @@
 	<string>Stefan Daschek</string>
 	<key>description</key>
 	<string>Bundle for the RuboCop Ruby Linter.</string>
-	<key>name</key>
-	<string>RuboCop</string>
 	<key>mainMenu</key>
 	<dict>
 		<key>excludedItems</key>
@@ -21,6 +19,17 @@
 			<string>CF5F3ECB-CCF4-4F73-B458-753A26002507</string>
 		</array>
 	</dict>
+	<key>name</key>
+	<string>RuboCop</string>
+	<key>require</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Ruby</string>
+			<key>uuid</key>
+			<string>467B298F-6227-11D9-BFB1-000D93589AF6</string>
+		</dict>
+	</array>
 	<key>uuid</key>
 	<string>8D75F09A-145A-43CD-853E-6C9CF0341624</string>
 </dict>
