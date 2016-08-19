@@ -8,12 +8,16 @@ class RubocopRunner
     Dir.chdir(ENV['TM_PROJECT_DIRECTORY'])
   end
 
-  # Run RuboCop for the given single file or Array of files. `script_args` can be used to pass additional command line options to
+  # Run RuboCop for the given single file or Array of files. If no files are
+  # specified, RuboCop will be run without arguments (and thus check every
+  # Ruby file in the current project directory).
+  #
+  # `script_args` can be used to pass additional command line options to
   # RuboCop.
   #
-  # If a block is given, it will be passed the number detected offenses (or false if no rubocop executable was found).
+  # If a block is given, it will be passed the number of detected offenses (or
+  # false if the rubocop executable could not be found).
   def run(file_or_files, script_args = [])
-    return unless file_or_files
     files = Array(file_or_files)
     executable, options = find_rubocop_executable
     if executable.nil?
@@ -22,7 +26,12 @@ class RubocopRunner
       options = {
         :script_args => %w(--format clang --display-cop-names) + script_args,
         :verb => 'Linting',
-        :noun => files.size == 1 ? File.basename(files[0]) : "#{files.size} selected files",
+        :noun =>
+          case files.size
+          when 0 then ENV['TM_PROJECT_DIRECTORY']
+          when 1 then File.basename(files[0])
+          else "#{files.size} selected files"
+          end,
         :use_hashbang => false,
         :version_replace => 'RuboCop \1',
       }.merge(options)
@@ -35,7 +44,8 @@ class RubocopRunner
     end
   end
 
-  # Like `#run`, but RuboCop will be run in the background (detached) to avoid blocking TextMate’s UI.
+  # Like `#run`, but RuboCop will be run in the background (detached) to avoid
+  # blocking TextMate’s UI.
   def run_in_background(file_or_files, script_args = [], &block)
     pid = fork do
       STDOUT.reopen(open('/dev/null', 'w'))
