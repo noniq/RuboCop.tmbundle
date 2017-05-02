@@ -21,7 +21,7 @@ end</string>
 	<key>inputFormat</key>
 	<string>text</string>
 	<key>keyEquivalent</key>
-	<string>^@l</string>
+	<string>^V</string>
 	<key>name</key>
 	<string>Run RuboCop</string>
 	<key>outputCaret</key>
