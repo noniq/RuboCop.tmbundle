@@ -38,3 +38,4 @@ git clone https://github.com/noniq/RuboCop.tmbundle.git
 
  * https://github.com/mrdougal/textmate2-rubocop
  * https://github.com/goyox86/rubocop-tmbundle
+ * https://github.com/fazibear/Rubocop.tmbundle
