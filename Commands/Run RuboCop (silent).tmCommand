@@ -33,7 +33,7 @@ end</string>
 	<key>outputLocation</key>
 	<string>discard</string>
 	<key>scope</key>
-	<string>source.ruby - (source.ruby.embedded, source.ruby.rails.embedded, meta.embedded.line.erb, meta.embedded.block.erb, markup.raw.block.ruby)</string>
+	<string>source.ruby - (attr.no-rubocop, source.ruby.embedded, source.ruby.rails.embedded, meta.embedded.line.erb, meta.embedded.block.erb, markup.raw.block.ruby)</string>
 	<key>semanticClass</key>
 	<string>callback.document.did-save, callback.document.did-reload</string>
 	<key>uuid</key>

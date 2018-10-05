@@ -9,6 +9,12 @@ This bundle integrates [RuboCop](https://github.com/bbatsov/rubocop) into [TextM
 
 There is one more subtle difference between running RuboCop implicitly (on save) or explicitly (via “Run RuboCop”): If your RuboCop configuration file excludes some files, those files will not be checked on save. They will however be checked if they are selected in the file browser and you use “Run RuboCop” (technically, running RuboCop on save uses [`--force-exclusion`][]).
 
+To **disable running RuboCop automatically** add this to your `.tm_properties`:
+
+```
+scopeAttributes = attr.no-rubocop
+```
+
 [clang style]: http://rubocop.readthedocs.io/en/latest/formatters/#clang-style-formatter
 [`--force-exclusion`]: https://github.com/bbatsov/rubocop/issues/893
 
